@@ -22,7 +22,7 @@ public abstract class Vehicle {
 		this.priceMin = priceMin;
 	}
 
-	public abstract void exitAction() throws NotInGarage;
+	public abstract String exitAction() throws NotInGarage;
 
 	public void entryAction() throws AlreadyInGarage {
 

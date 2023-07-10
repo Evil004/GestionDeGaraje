@@ -1,4 +1,4 @@
-package view;
+package view.console;
 
 import java.io.IOException;
 
@@ -8,11 +8,11 @@ import controller.exceptions.AlreadyInGarage;
 import controller.exceptions.AlreadyRegistered;
 import controller.exceptions.EmptyLicensePlate;
 import controller.exceptions.NotInGarage;
-import controller.utilities.Utilities;
+import view.View;
 
-public class MainMenu {
+public class ConsoleMenu implements View {
 
-	public static void mainMenu() {
+	public void startView() {
 
 		boolean flag = true;
 
@@ -83,8 +83,10 @@ public class MainMenu {
 		String licensePlate = Utilities.getStringInput("Introduce la matricula del vehiculo que ha entrado:");
 
 		try {
-			UserController.registerExit(licensePlate);
-			System.out.println("Se ha registrado la salida.");
+			System.out.println(UserController.registerExit(licensePlate));
+			
+			Utilities.pauseAndClear();
+			
 		} catch (NotInGarage | EmptyLicensePlate e) {
 			System.out.println(e.getMessage());
 		}

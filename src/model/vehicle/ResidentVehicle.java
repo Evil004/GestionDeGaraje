@@ -14,7 +14,7 @@ public class ResidentVehicle extends MonthlyBilledVehicle {
 	}
 
 	@Override
-	public void exitAction() throws NotInGarage {
+	public String exitAction() throws NotInGarage {
 		if (actualStay == null) {
 			throw new NotInGarage();
 		}
@@ -23,11 +23,12 @@ public class ResidentVehicle extends MonthlyBilledVehicle {
 
 		int mins = actualStay.getMins();
 
-		System.out.println("Has estado " + mins + " mins, se han acumulado a la factura mensual.");
-		System.out.println(actualStay.getPrice());
+		float stayPrice = actualStay.getPrice();
 
 		stayHistory.addStay(actualStay);
 		actualStay = null;
+
+		return "Has estado " + mins + " mins, se han acumulado " + stayPrice + "€ a la factura mensual.";
 
 	}
 

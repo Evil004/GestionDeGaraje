@@ -12,7 +12,7 @@ public class OfficialVehicle extends Vehicle implements MonthlyReset {
 	}
 
 	@Override
-	public void exitAction() throws NotInGarage {
+	public String exitAction() throws NotInGarage {
 
 		if (actualStay == null) {
 			throw new NotInGarage();
@@ -22,7 +22,7 @@ public class OfficialVehicle extends Vehicle implements MonthlyReset {
 
 		actualStay = null;
 
-		System.out.println("Eres un vehiculo oficial, no se te aplicara ningun cargo.");
+		return ("Eres un vehiculo oficial, no se te aplicara ningun cargo.");
 
 	}
 

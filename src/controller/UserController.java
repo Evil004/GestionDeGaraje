@@ -28,20 +28,23 @@ public class UserController {
 		if (!isRegistered) {
 			vehicle = new NonResidentVehicle(licensePlate);
 			VehicleList.addVehicle(vehicle);
-
 		}
 
 		vehicle.entryAction();
 
 	}
 
-	public static void registerExit(String licensePlate) throws NotInGarage, EmptyLicensePlate {
+	public static String registerExit(String licensePlate) throws NotInGarage, EmptyLicensePlate {
 		
 		emptyLicensePlate(licensePlate);
 		
 		Vehicle vehicle = VehicleList.getVehicle(licensePlate);
 
-		vehicle.exitAction();
+		if(vehicle == null) {
+			throw new NotInGarage();
+		}
+		
+		return vehicle.exitAction();
 
 	}
 
@@ -99,7 +102,7 @@ public class UserController {
 	}
 
 	private static void emptyLicensePlate(String licensePlate) throws EmptyLicensePlate {
-		if (licensePlate.trim().equals("")) {
+		if (licensePlate == null || licensePlate.trim().equals("")) {
 			throw new EmptyLicensePlate();
 		}
 	}

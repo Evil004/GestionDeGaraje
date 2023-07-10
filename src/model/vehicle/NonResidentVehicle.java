@@ -1,6 +1,5 @@
 package model.vehicle;
 import controller.exceptions.NotInGarage;
-import controller.utilities.Utilities;
 
 public class NonResidentVehicle extends Vehicle {
 
@@ -11,7 +10,7 @@ public class NonResidentVehicle extends Vehicle {
 	}
 
 	@Override
-	public void exitAction() throws NotInGarage {
+	public String exitAction() throws NotInGarage {
 		
 		if (actualStay == null) {
 			throw new NotInGarage();
@@ -20,12 +19,14 @@ public class NonResidentVehicle extends Vehicle {
 		actualStay.setExitTime();
 		
 		int mins = actualStay.getMins();
-		System.out.println("Has estado " + mins + " minutos, tienes que pagar " + actualStay.getPrice() + "€.");
+		float stayPrice = actualStay.getPrice();
+
 
 		stayHistory.addStay(actualStay);
 		actualStay = null;
 		
-		Utilities.pause("Pulsa Enter para pagar...");
+		return ("Has estado " + mins + " minutos, tienes que pagar " + stayPrice + "€.");
+
 	}
 
 
