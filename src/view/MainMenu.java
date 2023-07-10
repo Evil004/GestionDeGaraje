@@ -6,8 +6,9 @@ import controller.UserController;
 import controller.VehicleList;
 import controller.exceptions.AlreadyInGarage;
 import controller.exceptions.AlreadyRegistered;
+import controller.exceptions.EmptyLicensePlate;
 import controller.exceptions.NotInGarage;
-import utilities.Utilities;
+import controller.utilities.Utilities;
 
 public class MainMenu {
 
@@ -20,7 +21,7 @@ public class MainMenu {
 		while (flag) {
 			int option = Utilities
 					.getIntegerInput("Que quieres hacer?\n" + "(1) Registrar entrada.\n" + "(2) Registrar salida.\n"
-							+ "(3) Dar de alta vehículo oficia.\n" + "(4) Dar de alta vehículo de residente.\n"
+							+ "(3) Dar de alta vehículo oficial.\n" + "(4) Dar de alta vehículo de residente.\n"
 							+ "(5) Comenzar mes.\n" + "(6) Generar pagos de residentes.\n" + "(0) Salir.");
 
 			switch (option) {
@@ -51,13 +52,16 @@ public class MainMenu {
 			case 0:
 				flag = false;
 				System.out.println("Saliendo.");
-				break;
+				Utilities.closeScanner();
+				return;
 
 			default:
 				System.out.println("Introduce una opcion correcta, por favor.");
 				break;
 			}
 			Utilities.pauseAndClear();
+			
+
 		}
 	}
 
@@ -69,7 +73,7 @@ public class MainMenu {
 			UserController.registerEntry(licensePlate);
 
 			System.out.println("Se ha registrado la entrada.");
-		} catch (AlreadyInGarage e) {
+		} catch (AlreadyInGarage | EmptyLicensePlate e) {
 			System.out.println(e.getMessage());
 		}
 
@@ -81,7 +85,7 @@ public class MainMenu {
 		try {
 			UserController.registerExit(licensePlate);
 			System.out.println("Se ha registrado la salida.");
-		} catch (NotInGarage e) {
+		} catch (NotInGarage | EmptyLicensePlate e) {
 			System.out.println(e.getMessage());
 		}
 
@@ -94,7 +98,7 @@ public class MainMenu {
 			UserController.registerOficialVehicle(licensePlate);
 			System.out.println("Se ha agregado el vehiculo oficial.");
 
-		} catch (AlreadyRegistered e) {
+		} catch (AlreadyRegistered | EmptyLicensePlate e) {
 
 			System.out.println(e.getMessage());
 
@@ -108,7 +112,7 @@ public class MainMenu {
 
 			System.out.println("Se ha agregado el vehiculo del residente.");
 
-		} catch (AlreadyRegistered e) {
+		} catch (AlreadyRegistered | EmptyLicensePlate e) {
 			System.out.println(e.getMessage());
 		}
 	}
