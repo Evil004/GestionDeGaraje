@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import controller.exceptions.AlreadyInGarage;
 import controller.exceptions.AlreadyRegistered;
+import controller.exceptions.EmptyLicensePlate;
 import controller.exceptions.NotInGarage;
 import model.PaymentReport;
 import model.vehicle.MonthlyReset;
@@ -16,7 +17,9 @@ import model.vehicle.Vehicle;
 
 public class UserController {
 
-	public static void registerEntry(String licensePlate) throws AlreadyInGarage {
+	public static void registerEntry(String licensePlate) throws AlreadyInGarage, EmptyLicensePlate {
+		
+		emptyLicensePlate(licensePlate);
 
 		Vehicle vehicle = VehicleList.getVehicle(licensePlate);
 
@@ -32,14 +35,17 @@ public class UserController {
 
 	}
 
-	public static void registerExit(String licensePlate) throws NotInGarage {
+	public static void registerExit(String licensePlate) throws NotInGarage, EmptyLicensePlate {
+		
+		emptyLicensePlate(licensePlate);
+		
 		Vehicle vehicle = VehicleList.getVehicle(licensePlate);
 
 		vehicle.exitAction();
 
 	}
 
-	public static void registerOficialVehicle(String licensePlate) throws AlreadyRegistered {
+	public static void registerOficialVehicle(String licensePlate) throws AlreadyRegistered, EmptyLicensePlate {
 		isRegistered(licensePlate);
 
 		Vehicle oficialVehicle = new OfficialVehicle(licensePlate);
@@ -48,7 +54,7 @@ public class UserController {
 
 	}
 
-	public static void registerResidentVehicle(String licensePlate) throws AlreadyRegistered {
+	public static void registerResidentVehicle(String licensePlate) throws AlreadyRegistered, EmptyLicensePlate {
 
 		isRegistered(licensePlate);
 
@@ -81,11 +87,20 @@ public class UserController {
 
 	}
 
-	private static void isRegistered(String licensePlate) throws AlreadyRegistered  {
+	private static void isRegistered(String licensePlate) throws AlreadyRegistered, EmptyLicensePlate  {
+		
+		emptyLicensePlate(licensePlate);
+		
 		boolean isVehicleRegistered = VehicleList.getVehicle(licensePlate) != null;
 
 		if (isVehicleRegistered) {
 			throw new AlreadyRegistered();
+		}
+	}
+
+	private static void emptyLicensePlate(String licensePlate) throws EmptyLicensePlate {
+		if (licensePlate.trim().equals("")) {
+			throw new EmptyLicensePlate();
 		}
 	}
 

@@ -16,7 +16,7 @@ public abstract class MonthlyBilledVehicle extends Vehicle implements MonthlyRes
 		
 		for (Stay stay : stayHistory.getStays()) {
 			
-			if (stay.getExitTime() == null) continue;
+			if (stay.getExitTime() == null || stay.getEntryTime() == null) continue;
 			
 			totalMins += stay.getMins();
 			totalPrice += stay.getPrice();

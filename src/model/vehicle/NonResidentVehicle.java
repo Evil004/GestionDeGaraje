@@ -1,6 +1,6 @@
 package model.vehicle;
 import controller.exceptions.NotInGarage;
-import utilities.Utilities;
+import controller.utilities.Utilities;
 
 public class NonResidentVehicle extends Vehicle {
 

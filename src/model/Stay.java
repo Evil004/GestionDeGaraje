@@ -29,7 +29,7 @@ public class Stay {
 
 		long mins = diffTime / (60 * 1000);
 
-		return (int) mins;
+		return (int) Math.abs(mins);
 	}
 
 	public Date getEntryTime() {
@@ -42,10 +42,6 @@ public class Stay {
 
 	public Date getExitTime() {
 		return exitTime;
-	}
-
-	public void setExitTime(Date exitTime) {
-		this.exitTime = exitTime;
 	}
 
 	public void setExitTime() {
