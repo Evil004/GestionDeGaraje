@@ -21,12 +21,16 @@ public class RegisterExit implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String licensePlate = JOptionPane.showInputDialog("Introduce la matricula del vehiculo:");
+		String licensePlate = JOptionPane.showInputDialog(parent,"Introduce la matricula del vehiculo:");
+		
+		if (licensePlate == null) {
+			return;
+		}
 		
 		try {
-			UserController.registerExit(licensePlate);
+			String exit = UserController.registerExit(licensePlate);
 			
-			JOptionPane.showMessageDialog(parent, "Se ha registrado la salida");
+			JOptionPane.showMessageDialog(parent, "Se ha registrado la salida.\n"+ exit);
 			
 		} catch (NotInGarage | EmptyLicensePlate e1) {
 			JOptionPane.showMessageDialog(parent,e1.getMessage());

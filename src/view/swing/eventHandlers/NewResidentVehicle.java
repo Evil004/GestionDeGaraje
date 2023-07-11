@@ -21,12 +21,16 @@ public class NewResidentVehicle implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String licensePlate = JOptionPane.showInputDialog("Introduce la matricula del vehiculo:");
+		String licensePlate = JOptionPane.showInputDialog(parent, "Introduce la matricula del vehiculo:");
+		
+		if (licensePlate == null) {
+			return;
+		}
 		
 		try {
-			UserController.registerOficialVehicle(licensePlate);
+			UserController.registerResidentVehicle(licensePlate);
 		
-			JOptionPane.showMessageDialog(parent, "Se ha registrado el vehiculo oficial");
+			JOptionPane.showMessageDialog(parent, "Se ha registrado el vehiculo de residente");
 		} catch (AlreadyRegistered | EmptyLicensePlate e1) {
 			JOptionPane.showMessageDialog(parent,e1.getMessage());
 		} 

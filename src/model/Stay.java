@@ -14,8 +14,8 @@ public class Stay {
 		this.priceMin = priceMin;
 
 	}
-
-	public int getMins() {
+	
+	public float getDecimalMins() {
 		if (entryTime == null) {
 			System.out.println("No se ha registrado el tiempo de entrada");
 			return 0;
@@ -27,9 +27,15 @@ public class Stay {
 
 		long diffTime = exitTime.getTime() - entryTime.getTime();
 
-		long mins = diffTime / (60 * 1000);
+		float mins = (float)diffTime / (60 * 1000);
 
-		return (int) Math.abs(mins);
+		return Math.abs(mins);
+	}
+
+	public int getMins() {
+		
+
+		return (int)getDecimalMins();
 	}
 
 	public Date getEntryTime() {
@@ -47,10 +53,23 @@ public class Stay {
 	public void setExitTime() {
 		this.exitTime = new Date(System.currentTimeMillis());
 	}
+	
+	public void setExitTime(Date exitTime) {
+		this.exitTime = exitTime;
+	}
 
+	public float getFullDecimalPrice() {
+		return (float) (priceMin * getDecimalMins());
+	}
+	
 	public float getPrice() {
-		return (float) (Math.floor((priceMin * getMins()) * 100) / 100);
+		
+		return (float) (Math.floor(getFullDecimalPrice() * 100) / 100);
 
+	}
+	
+	public void setPriceMin(float priceMin) {
+		this.priceMin = priceMin;
 	}
 
 }

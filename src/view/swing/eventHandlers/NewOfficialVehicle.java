@@ -21,7 +21,11 @@ public class NewOfficialVehicle implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String licensePlate = JOptionPane.showInputDialog("Introduce la matricula del vehiculo:");
+		String licensePlate = JOptionPane.showInputDialog(parent, "Introduce la matricula del vehiculo:");
+		
+		if (licensePlate == null) {
+			return;
+		}
 		
 		try {
 			UserController.registerResidentVehicle(licensePlate);

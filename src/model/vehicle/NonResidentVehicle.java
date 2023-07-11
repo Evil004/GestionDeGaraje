@@ -1,9 +1,11 @@
 package model.vehicle;
+
 import controller.exceptions.NotInGarage;
 
-public class NonResidentVehicle extends Vehicle {
+public class NonResidentVehicle extends Vehicle  {
 
 	private static final float PRICE_MIN = 0.02f;
+	private static final int MIN_TIME = 0;
 
 	public NonResidentVehicle(String licensePlate) {
 		super(licensePlate, PRICE_MIN);
@@ -11,26 +13,31 @@ public class NonResidentVehicle extends Vehicle {
 
 	@Override
 	public String exitAction() throws NotInGarage {
-		
+
 		if (actualStay == null) {
 			throw new NotInGarage();
 		}
 
 		actualStay.setExitTime();
-		
+
 		int mins = actualStay.getMins();
 		float stayPrice = actualStay.getPrice();
 
+		if (mins <= MIN_TIME) {
+			actualStay.setPriceMin(0);
+
+			stayHistory.addStay(actualStay);
+
+			actualStay = null;
+			return ("La estancia ha sido demasiado corta, no se cobrará nada por ella.");
+		}
 
 		stayHistory.addStay(actualStay);
 		actualStay = null;
-		
+
 		return ("Has estado " + mins + " minutos, tienes que pagar " + stayPrice + "€.");
 
 	}
 
-
-	
-	
 
 }

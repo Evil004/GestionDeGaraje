@@ -1,9 +1,9 @@
 package model.vehicle;
 
-import controller.StayHistory;
 import controller.exceptions.AlreadyInGarage;
 import controller.exceptions.NotInGarage;
 import model.Stay;
+import model.StayHistory;
 
 public abstract class Vehicle {
 
@@ -48,6 +48,10 @@ public abstract class Vehicle {
 
 	public void setLicensePlate(String licensePlate) {
 		this.licensePlate = licensePlate;
+	}
+	
+	public Stay getActualStay() {
+		return actualStay;
 	}
 
 }

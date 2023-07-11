@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import view.swing.eventHandlers.GenerateREsidentReports;
+import view.swing.eventHandlers.GenerateResidentReports;
 import view.swing.eventHandlers.NewOfficialVehicle;
 import view.swing.eventHandlers.NewResidentVehicle;
 import view.swing.eventHandlers.RegisterEntry;
@@ -38,8 +38,8 @@ public class MainPanel extends JPanel {
 		startMonth.addActionListener(new StartMonth(this));
 		add(startMonth);
 		
-		JButton generateMonthlyReport = new JButton("Gerar informe de los pagos de los residentes");
-		generateMonthlyReport.addActionListener(new GenerateREsidentReports(this));
+		JButton generateMonthlyReport = new JButton("Generar informe de los pagos de los residentes");
+		generateMonthlyReport.addActionListener(new GenerateResidentReports(this));
 		add(generateMonthlyReport);
 		
 		

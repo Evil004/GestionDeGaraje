@@ -1,5 +1,4 @@
 import view.View;
-import view.console.ConsoleMenu;
 import view.swing.SwingMenu;
 
 public class Main {

@@ -1,10 +1,8 @@
 package model;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import controller.ReportGenerator;
 import model.vehicle.MonthlyBilledVehicle;
 import model.vehicle.Vehicle;
 
@@ -22,11 +20,11 @@ public class PaymentReport {
 
 		this.vehicles = mbVehicles;
 	}
-
-	public File generateReport(String fileName) {
-
-		return ReportGenerator.generateReportFile(vehicles, fileName);
-
+	
+	public ArrayList<MonthlyBilledVehicle> getVehicles() {
+		return vehicles;
 	}
+
+	
 
 }

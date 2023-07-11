@@ -97,7 +97,7 @@ public class ConsoleMenu implements View {
 		String licensePlate = Utilities.getStringInput("Introduce la matricula del vehiculo:");
 
 		try {
-			UserController.registerOficialVehicle(licensePlate);
+			UserController.registerOfficialVehicle(licensePlate);
 			System.out.println("Se ha agregado el vehiculo oficial.");
 
 		} catch (AlreadyRegistered | EmptyLicensePlate e) {
