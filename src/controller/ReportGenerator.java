@@ -5,11 +5,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
+import model.PaymentReport;
 import model.vehicle.MonthlyBilledVehicle;
 
 public class ReportGenerator {
 
-	public static File generateReportFile(ArrayList<MonthlyBilledVehicle> vehicles, String fileName) {
+	public static File generateReportFile(PaymentReport payReport, String fileName) {
+
+		ArrayList<MonthlyBilledVehicle> vehicles = payReport.getVehicles();
 
 		File file = null;
 		try {
@@ -18,13 +21,17 @@ public class ReportGenerator {
 
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
-			writer.write(
-					String.format("%-13s %-30s %-20s\n", "Matrícula", "Tiempo estacionado (min.)", "Cantidad a pagar"));
+			String fileHeader = String.format("%-13s %-30s %-20s\n", "Matrícula", "Tiempo estacionado (min.)",
+					"Cantidad a pagar");
+
+			writer.write(fileHeader);
 
 			for (MonthlyBilledVehicle vehicle : vehicles) {
-				writer.write(vehicle.getMensualBill() + "\n");
+				String vehicleData = vehicle.getMensualBill() + "\n";
+				
+				writer.write(vehicleData);
 			}
-			
+
 			writer.close();
 
 		} catch (Exception e) {

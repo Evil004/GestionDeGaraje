@@ -48,7 +48,7 @@ public class UserController {
 
 	}
 
-	public static void registerOficialVehicle(String licensePlate) throws AlreadyRegistered, EmptyLicensePlate {
+	public static void registerOfficialVehicle(String licensePlate) throws AlreadyRegistered, EmptyLicensePlate {
 		isRegistered(licensePlate);
 
 		Vehicle oficialVehicle = new OfficialVehicle(licensePlate);
@@ -84,7 +84,7 @@ public class UserController {
 
 		PaymentReport pReport = new PaymentReport(vehicles);
 
-		File reportFile = pReport.generateReport(fileName);
+		File reportFile = ReportGenerator.generateReportFile(pReport, fileName);
 
 		return reportFile.getCanonicalPath();
 
