@@ -1,13 +1,19 @@
-# Aplicacion de Gestion de graje.
+# Aplicación de Gestión de grage.
 
-Está es una aplicacion de gestion de garage, que permite gestionar los vehiculos que ingresan al garage, y los que salen del mismo.
+Esta es una aplicación de gestión de garaje, que permite gestionar los vehículos que ingresan al garaje, y los que salen del mismo.
 
-## Caracteristicas
+## Características
 
-- Permite registrar la hora de ingreso de un vehiculo.
-- Permite registrar la hora de salida de un vehiculo.
-- Permite calcular el costo de la estancia de un vehiculo.
-- Permite diferenciar entre 3 tipos de vehiculos: Oficial, Residente y No Residente.
-- Los vehiculos oficiales no pagan estancia.
-- Los vehiculos residentes pagan de manera mensual, y se puede obtener un reporte de los pagos de un mes.
-- Los vehiculos no residentes pagan por minuto a la salida del garage.
+- Permite registrar la hora de ingreso de un vehículo.
+- Permite registrar la hora de salida de un vehículo.
+- Permite calcular el costo de la estancia de un vehículo.
+- Permite diferenciar entre 3 tipos de vehículos: Oficial, Residente y No Residente.
+- Los vehículos oficiales no pagan estancia.
+- Los vehículos residentes pagan de manera mensual, y se puede obtener un reporte de los pagos de un mes.
+- Los vehículos no residentes pagan por minuto a la salida del garaje.
+
+## Uso
+
+Para usar la aplicación hay dos maneras, ejecutando el archivo compilado que puedes encontrar [aquí](https://github.com/Evil004/GestionDeGaraje/releases) o compilándolo tú mismo.
+
+Para ejecutar el archivo compilado es necesario tener instalado Java 1.8 o superior, y ejecutarlo, ya sea dándole doble click o desde la terminal con el comando `java -jar ./GestionDeGaraje.jar`.
