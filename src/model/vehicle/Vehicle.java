@@ -1,7 +1,5 @@
 package model.vehicle;
 
-import controller.exceptions.AlreadyInGarage;
-import controller.exceptions.NotInGarage;
 import model.Stay;
 import model.StayHistory;
 
@@ -12,7 +10,6 @@ public abstract class Vehicle {
 	private String licensePlate;
 	private float priceMin;
 
-	
 	public StayHistory getStayHistory() {
 		return stayHistory;
 	}
@@ -22,15 +19,16 @@ public abstract class Vehicle {
 		this.priceMin = priceMin;
 	}
 
-	public abstract String exitAction() throws NotInGarage;
+	public abstract String exitAction();
 
-	public void entryAction() throws AlreadyInGarage {
+	public boolean entryAction() {
 
 		if (actualStay != null) {
-			throw new AlreadyInGarage();
+			return false;
 		}
 
 		actualStay = new Stay(priceMin);
+		return true;
 
 	};
 
@@ -49,7 +47,7 @@ public abstract class Vehicle {
 	public void setLicensePlate(String licensePlate) {
 		this.licensePlate = licensePlate;
 	}
-	
+
 	public Stay getActualStay() {
 		return actualStay;
 	}

@@ -3,7 +3,6 @@ package view.console;
 import java.io.IOException;
 
 import controller.UserController;
-import controller.VehicleList;
 import controller.exceptions.AlreadyInGarage;
 import controller.exceptions.AlreadyRegistered;
 import controller.exceptions.EmptyLicensePlate;
@@ -16,7 +15,6 @@ public class ConsoleMenu implements View {
 
 		boolean flag = true;
 
-		System.out.println(VehicleList.getList());
 
 		while (flag) {
 			int option = Utilities

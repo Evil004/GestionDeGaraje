@@ -30,7 +30,7 @@ public class UserController {
 			VehicleList.addVehicle(vehicle);
 		}
 
-		vehicle.entryAction();
+		if (!vehicle.entryAction()) throw new AlreadyInGarage();
 
 	}
 
@@ -44,7 +44,13 @@ public class UserController {
 			throw new NotInGarage();
 		}
 		
-		return vehicle.exitAction();
+		String result = vehicle.exitAction();
+		
+		if (result == null) {
+			throw new NotInGarage();
+		}
+		
+		return result;
 
 	}
 

@@ -1,7 +1,5 @@
 package model.vehicle;
 
-import controller.exceptions.NotInGarage;
-
 public class OfficialVehicle extends Vehicle implements MonthlyReset {
 
 	private static final float PRICE_MIN = 0;
@@ -12,11 +10,8 @@ public class OfficialVehicle extends Vehicle implements MonthlyReset {
 	}
 
 	@Override
-	public String exitAction() throws NotInGarage {
+	public String exitAction() {
 
-		if (actualStay == null) {
-			throw new NotInGarage();
-		}
 
 		stayHistory.addStay(actualStay);
 

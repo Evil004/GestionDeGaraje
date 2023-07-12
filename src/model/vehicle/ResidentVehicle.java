@@ -1,7 +1,5 @@
 package model.vehicle;
 
-import controller.exceptions.NotInGarage;
-
 public class ResidentVehicle extends MonthlyBilledVehicle {
 
 	private static final float PRICE_MIN = 0.002f;
@@ -12,10 +10,8 @@ public class ResidentVehicle extends MonthlyBilledVehicle {
 	}
 
 	@Override
-	public String exitAction() throws NotInGarage {
-		if (actualStay == null) {
-			throw new NotInGarage();
-		}
+	public String exitAction()  {
+		
 
 		actualStay.setExitTime();
 
