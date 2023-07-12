@@ -17,3 +17,7 @@ Esta es una aplicación de gestión de garaje, que permite gestionar los vehícu
 Para usar la aplicación hay dos maneras, ejecutando el archivo compilado que puedes encontrar [aquí](https://github.com/Evil004/GestionDeGaraje/releases) o compilándolo tú mismo.
 
 Para ejecutar el archivo compilado es necesario tener instalado Java 1.8 o superior, y ejecutarlo, ya sea dándole doble click o desde la terminal con el comando `java -jar ./GestionDeGaraje.jar`.
+
+## A tener en cuenta
+
+Al importar el codigo en un proyecto es posible que los tests tengan errores debido a que falta JUnit, para solucionarlo tienes que importar JUnit 5 al proyecto.
