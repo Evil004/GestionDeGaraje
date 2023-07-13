@@ -9,7 +9,7 @@ public class SwingMenu extends JFrame implements View {
 
 	@Override
 	public void startView() {
-		setTitle("Gestion de Garage");
+		setTitle("Gestion de Garaje");
 		setSize(400,300);
 		setResizable(false);
 		setLocationRelativeTo(null);
