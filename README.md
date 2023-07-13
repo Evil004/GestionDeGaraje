@@ -1,4 +1,4 @@
-# Aplicación de Gestión de grage.
+# Aplicación de Gestión de graje.
 
 Esta es una aplicación de gestión de garaje, que permite gestionar los vehículos que ingresan al garaje, y los que salen del mismo.
 
